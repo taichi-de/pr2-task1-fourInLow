@@ -7,13 +7,13 @@ public class Game {
     int currentColumn;
 
     public String[][] gameField = {
-            { "*", "*", "*", "*", "*", "*", "*" },
-            { "*", "*", "*", "*", "*", "*", "*" },
-            { "*", "*", "*", "*", "*", "*", "*" },
-            { "*", "*", "*", "*", "*", "*", "*" },
-            { "*", "*", "*", "*", "*", "*", "*" },
-            { "*", "*", "*", "*", "*", "*", "*" },
-            { "1", "2", "3", "4", "5", "6", "7" }
+        { "*", "*", "*", "*", "*", "*", "*" },
+        { "*", "*", "*", "*", "*", "*", "*" },
+        { "*", "*", "*", "*", "*", "*", "*" },
+        { "*", "*", "*", "*", "*", "*", "*" },
+        { "*", "*", "*", "*", "*", "*", "*" },
+        { "*", "*", "*", "*", "*", "*", "*" },
+        { "1", "2", "3", "4", "5", "6", "7" }
     };
 
     public String[][] getField(){
@@ -56,66 +56,54 @@ public class Game {
         // check the Field horizontally
         currentLine = 0;
         currentColumn = 0;
-            while (currentColumn < 4) {
-                if (gameField[currentLine][currentColumn] == playerMove &&
-                    gameField[currentLine][currentColumn + 1] == playerMove &&
-                    gameField[currentLine][currentColumn + 2] == playerMove &&
-                    gameField[currentLine][currentColumn + 3] == playerMove)
-                    winPlayer = playerID;
-                currentLine++;
-                if (currentLine == 6) {
-                    currentLine = 0;
-                    currentColumn++;
-                }
+        while (currentColumn < 4) {
+            if (gameField[currentLine][currentColumn] == playerMove && gameField[currentLine][currentColumn + 1] == playerMove && gameField[currentLine][currentColumn + 2] == playerMove && gameField[currentLine][currentColumn + 3] == playerMove)
+                winPlayer = playerID;
+            currentLine++;
+            if (currentLine == 6) {
+                currentLine = 0;
+                currentColumn++;
             }
+        }
 
         // check the Field vertically
-            currentLine = 0;
-            currentColumn = 0;
-            while (currentLine < 3) {
-                if (gameField[currentLine][currentColumn] == playerMove &&
-                    gameField[currentLine+1][currentColumn] == playerMove &&
-                    gameField[currentLine+2][currentColumn] == playerMove &&
-                    gameField[currentLine+3][currentColumn] == playerMove)
-                    winPlayer = playerID;
-                currentColumn++;
-                if (currentColumn == 7) {
-                    currentColumn = 0;
-                    currentLine++;
-                }
+        currentLine = 0;
+        currentColumn = 0;
+        while (currentLine < 3) {
+            if (gameField[currentLine][currentColumn] == playerMove && gameField[currentLine+1][currentColumn] == playerMove && gameField[currentLine+2][currentColumn] == playerMove && gameField[currentLine+3][currentColumn] == playerMove)
+                winPlayer = playerID;
+            currentColumn++;
+            if (currentColumn == 7) {
+                currentColumn = 0;
+                currentLine++;
             }
+        }
 
         // check the Field diagonal (> right)
-            currentLine = 0;
-            currentColumn = 0;
-            while (currentLine < 3) {
-                if (gameField[currentLine][currentColumn] == playerMove &&
-                    gameField[currentLine+1][currentColumn+1] == playerMove &&
-                    gameField[currentLine+2][currentColumn+2] == playerMove &&
-                    gameField[currentLine+3][currentColumn+3] == playerMove)
-                    winPlayer = playerID;
-                currentColumn++;
-                if (currentColumn == 4) {
-                    currentColumn = 0;
-                    currentLine++;
-                }
+        currentLine = 0;
+        currentColumn = 0;
+        while (currentLine < 3) {
+            if (gameField[currentLine][currentColumn] == playerMove && gameField[currentLine+1][currentColumn+1] == playerMove && gameField[currentLine+2][currentColumn+2] == playerMove && gameField[currentLine+3][currentColumn+3] == playerMove)
+                winPlayer = playerID;
+            currentColumn++;
+            if (currentColumn == 4) {
+                currentColumn = 0;
+                currentLine++;
             }
+        }
 
         // check the Field diagonal (< left)
-            currentLine = 0;
-            currentColumn = 6;
-            while (currentLine < 3) {
-                if (gameField[currentLine][currentColumn] == playerMove &&
-                    gameField[currentLine+1][currentColumn-1] == playerMove &&
-                    gameField[currentLine+2][currentColumn-2] == playerMove &&
-                    gameField[currentLine+3][currentColumn-3] == playerMove)
-                    winPlayer = playerID;
-                currentColumn--;
-                if (currentColumn == 2) {
-                    currentColumn = 6;
-                    currentLine++;
-                }
+        currentLine = 0;
+        currentColumn = 6;
+        while (currentLine < 3) {
+            if (gameField[currentLine][currentColumn] == playerMove && gameField[currentLine+1][currentColumn-1] == playerMove && gameField[currentLine+2][currentColumn-2] == playerMove && gameField[currentLine+3][currentColumn-3] == playerMove)
+                winPlayer = playerID;
+            currentColumn--;
+            if (currentColumn == 2) {
+                currentColumn = 6;
+                currentLine++;
             }
+        }
 
         if(playerID == 1 && skipCheck != 1) currentTurn = 2;
         else if(playerID == 2 && skipCheck != 1) currentTurn = 1;
